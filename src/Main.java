@@ -1,20 +1,19 @@
+import model.WalletAccount;
+
 public class Main {
+
     public static void main(String[] args) {
 
-        System.out.println("=================================");
-        System.out.println("      IGIREPAY SYSTEM TEST       ");
-        System.out.println("=================================");
+        WalletAccount wallet =
+                new WalletAccount(1, 101, 5000, "1234");
 
-        String customerName = "Gervais";
-        double balance = 50000.0;
+        System.out.println(wallet);
 
-        System.out.println("Customer Name: " + customerName);
-        System.out.println("Account Balance: " + balance);
+        wallet.deposit(1000);
 
-        balance += 10000;
+        wallet.withdraw(500);
 
-        System.out.println("Balance after deposit: " + balance);
-
-        System.out.println("Java is working successfully!");
+        System.out.println("Current balance: "
+                + wallet.getBalance());
     }
 }
