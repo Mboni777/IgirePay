@@ -1,19 +1,20 @@
-import model.WalletAccount;
+import dao.CustomerDAO;
+import model.Customer;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        WalletAccount wallet =
-                new WalletAccount(1, 101, 5000, "1234");
+        Customer customer =
+                new Customer(
+                        0,
+                        "Gervais Mboninkunda",
+                        "gervais@example.com",
+                        "+233257360503"
+                );
 
-        System.out.println(wallet);
+        CustomerDAO customerDAO = new CustomerDAO();
 
-        wallet.deposit(1000);
-
-        wallet.withdraw(500);
-
-        System.out.println("Current balance: "
-                + wallet.getBalance());
+        customerDAO.addCustomer(customer);
     }
 }
