@@ -1,20 +1,20 @@
-import dao.CustomerDAO;
-import model.Customer;
+import dao.AccountDAO;
+import model.WalletAccount;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Customer customer =
-                new Customer(
+        AccountDAO dao = new AccountDAO();
+
+        WalletAccount account =
+                new WalletAccount(
                         0,
-                        "Gervais Mboninkunda",
-                        "gervais@example.com",
-                        "+233257360503"
+                        1,
+                        1000.0,
+                        "1234"
                 );
 
-        CustomerDAO customerDAO = new CustomerDAO();
-
-        customerDAO.addCustomer(customer);
+        dao.createAccount(account);
     }
 }
