@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 public class Transaction {
 
     private int id;
+    private int accountId;
     private String referenceId;
     private double amount;
     private String transactionType;
@@ -13,12 +14,16 @@ public class Transaction {
     public Transaction() {
     }
 
-    public Transaction(int id, String referenceId,
-                       double amount,
-                       String transactionType,
-                       LocalDateTime timestamp) {
+    public Transaction(
+            int id,
+            int accountId,
+            String referenceId,
+            double amount,
+            String transactionType,
+            LocalDateTime timestamp) {
 
         this.id = id;
+        this.accountId = accountId;
         this.referenceId = referenceId;
         this.amount = amount;
         this.transactionType = transactionType;
@@ -31,6 +36,14 @@ public class Transaction {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public String getReferenceId() {
@@ -69,6 +82,7 @@ public class Transaction {
     public String toString() {
         return "Transaction{" +
                 "id=" + id +
+                ", accountId=" + accountId +
                 ", referenceId='" + referenceId + '\'' +
                 ", amount=" + amount +
                 ", transactionType='" + transactionType + '\'' +

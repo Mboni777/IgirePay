@@ -1,20 +1,14 @@
-import dao.AccountDAO;
-import model.WalletAccount;
+import service.PaymentService;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        AccountDAO dao = new AccountDAO();
+        PaymentService paymentService =
+                new PaymentService();
 
-        WalletAccount account =
-                new WalletAccount(
-                        0,
-                        1,
-                        1000.0,
-                        "1234"
-                );
+        paymentService.processTransaction("REF001");
 
-        dao.createAccount(account);
+        paymentService.processTransaction("REF001");
     }
 }
