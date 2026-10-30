@@ -14,7 +14,7 @@ JDBC Database Integration
 CSV Transaction Reports
 
 
-Technologies Used
+Technologies Used.
 Java 21
 PostgreSQL
 JDBC
