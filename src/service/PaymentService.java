@@ -1,30 +1,66 @@
 package service;
 
-import java.util.HashSet;
-import java.util.Set;
+import dao.ProcessedRequestDAO;
 
 public class PaymentService {
 
-    private final Set<String> processedReferences =
-            new HashSet<>();
+    private final ProcessedRequestDAO processedRequestDAO =
+            new ProcessedRequestDAO();
 
-    public boolean processReference(String referenceId) {
+    public void deposit(
+            double balance,
+            double amount,
+            String referenceId) {
 
-        if (processedReferences.contains(referenceId)) {
+        if (processedRequestDAO.referenceExists(referenceId)) {
 
             System.out.println(
                     "Duplicate transaction detected. Rejected."
             );
 
-            return false;
+            return;
         }
 
-        processedReferences.add(referenceId);
+        balance += amount;
 
         System.out.println(
-                "Reference stored successfully."
+                "Deposit successful. New balance: "
+                        + balance
         );
 
-        return true;
+        processedRequestDAO.saveReference(referenceId);
+    }
+
+    public void withdraw(
+            double balance,
+            double amount,
+            String referenceId) {
+
+        if (processedRequestDAO.referenceExists(referenceId)) {
+
+            System.out.println(
+                    "Duplicate transaction detected. Rejected."
+            );
+
+            return;
+        }
+
+        if (amount > balance) {
+
+            System.out.println(
+                    "Insufficient balance."
+            );
+
+            return;
+        }
+
+        balance -= amount;
+
+        System.out.println(
+                "Withdrawal successful. New balance: "
+                        + balance
+        );
+
+        processedRequestDAO.saveReference(referenceId);
     }
 }
