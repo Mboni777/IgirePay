@@ -1,4 +1,6 @@
+import service.AuthenticationService;
 import service.PaymentService;
+import service.SecurityService;
 
 public class Main {
 
@@ -7,8 +9,22 @@ public class Main {
         PaymentService paymentService =
                 new PaymentService();
 
-        paymentService.processTransaction("REF001");
+        paymentService.processReference("REF001");
 
-        paymentService.processTransaction("REF001");
+        paymentService.processReference("REF001");
+
+        SecurityService securityService =
+                new SecurityService();
+
+        System.out.println(
+                securityService.isPinValid("1234")
+        );
+
+        AuthenticationService auth =
+                new AuthenticationService();
+
+        System.out.println(
+                auth.validatePin("1234", "1234")
+        );
     }
 }
